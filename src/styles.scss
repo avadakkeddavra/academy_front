@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    font-family: 'Roboto', sans-serif;
+}
+button{
+    &.btn.small, &.btn-flat.small{
+        padding: 0px 10px !important;
+        font-size: 13px;
+    }
+    
+}
+span.badge{
+    min-width: 20px !important;
+    font-weight: bold !important;
+}

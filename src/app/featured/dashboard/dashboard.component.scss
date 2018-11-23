@@ -1,0 +1,28 @@
+header {
+    padding: 80px;
+    .title{
+        width: 40%;
+        h1{
+            font-size: 30px;
+            font-weight: bold;
+        }
+        button{
+            margin-right: 10px;
+            color: #ffffff;
+        }
+    }
+}
+section.main{
+    padding: 50px 0px;
+    .row{
+        padding: 40px 0px;
+    }
+    .col.m8{
+        padding: 0px 30px;
+    }
+    img {
+        padding:0px 100px;
+        display: block;
+        width: 100%;    
+    }
+}

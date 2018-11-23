@@ -1,0 +1,23 @@
+header {
+    padding: 120px 80px 40px 80px;
+    input{
+        font-size: 25px;
+        color: #ffffff;
+        width: 50%;
+        border:none;
+        box-shadow: none;
+        &::placeholder{
+            color: #ffffff;
+        }
+    }
+    input[type=text]:not(.browser-default):focus:not([readonly]) {
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 1px 0 0 #fff;
+    }
+} 
+
+section.main{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
