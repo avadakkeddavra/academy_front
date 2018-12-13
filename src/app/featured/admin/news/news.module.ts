@@ -7,6 +7,7 @@ import { NewsCreateComponent } from './news-create/news-create.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
     CommonModule,
     NewsRoutingModule,
     SharedModule,
+    RouterModule,
     FormsModule,
     EditorModule
   ],

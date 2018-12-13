@@ -29,8 +29,8 @@
         top: 50%;
         .card{
             padding: 20px;
-            .new-content {
-                margin-top: 20px;
+            .card-content {
+                margin-top: 80px;
             }
         }
     }
@@ -47,6 +47,31 @@
     background-position: center;
     float: left;
     &.selected{
-        border: 1px solid green;
+        border: 3px solid #4eb575;
     }
+}
+.title{
+  border-bottom: 2px solid #eee;
+}
+.new-content{
+  border-bottom: 2px solid #eee;
+}
+
+.attachements-capture{
+  padding: 10px 20px;
+  .attachement {
+    padding:7px 10px;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    i:not(.close){
+      float: left;
+      width: 50px;
+    }
+    i.close{
+      font-size: 16px;
+      line-height: 25px;
+      color: #8b8b8b;
+      cursor: pointer;
+    }
+  }
 }

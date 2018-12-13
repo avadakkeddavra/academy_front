@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let new of News">
+      <tr *ngFor="let new of News" (click)="router.navigate(['/admin/news/edit', new.id])">
         <td>{{new.id}}</td>
         <td>{{new.title}}</td>
         <td>{{new.content | slice:0:100}}</td>
@@ -36,7 +36,7 @@
       </tr>
     </tbody>
   </table>
-  
+
   <div class="pagination">
     <div class="right page-actions">
       <i class="material-icons grey-text">keyboard_arrow_left</i>

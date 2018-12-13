@@ -16,6 +16,10 @@ const routes: Routes = [
         {
             path: 'create',
             component: NewsCreateComponent
+        },
+        {
+          path: 'edit/:id',
+          component: NewsCreateComponent
         }
     ]
   }
