@@ -1,0 +1,96 @@
+<section>
+  <form #createForm="ngForm">
+    <div class="row">
+      <div class="col m8">
+        <div class="new row">
+            <div class="col m4 img">
+                <img src="https://cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-aquamarine.jpg?630222957639193643" 
+                alt="" 
+                class="responsive-img z-depth-2">
+            </div>
+            <div class="new-container">
+              <div class="card z-depth-4">
+                <div class="card-header row">
+                  <div class="col m4"></div>
+                  <div class="col m7 title">
+                    <h5>Default title</h5>
+                  </div>
+                </div>
+                <div class="card-content new-content">
+                  <p>Lorem, ipsum.</p>
+                </div>
+
+                <mz-tab *ngIf="Attachements">
+                  <mz-tab-item [label]="'Upload files'">
+                    <div class="file-field input-field">
+                        <div class="btn">
+                          <span>File</span>
+                          <input type="file" multiple #files (change)="fileUpload(files)">
+                        </div>
+                        <div class="file-path-wrapper">
+                          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                        </div>
+                    </div>
+                  </mz-tab-item>
+                  <mz-tab-item [label]="'Choose file'">
+                    <div class="image-caption" 
+                    [ngStyle]="{'background-image': 'url(http://localhost:3000/' + file.path + ')'}"
+                    [ngClass]="file.selected === 1 ? 'selected' : ''"
+                    *ngFor="let file of Attachements"
+                    (click)="addFile(file)"
+                    ></div>
+                    <div class="clearfix"></div>
+                  </mz-tab-item>
+                </mz-tab>
+
+              </div>
+              <button class="btn orange white-text" (click)="save()">save</button>
+            </div>
+        </div>
+      </div>
+      <div class="col m4">
+        <div class="card tags">
+          <div class="card-content">
+            <div class="input-field">
+              <mz-select-container
+              >
+                <select 
+                  name="tags"
+                  ngModel
+                  id=""
+                  [label]="'Tags'"
+                  multiple
+                  mz-select
+                  #tags
+                  (change)="tagsManage()"
+                >
+                  <optgroup label="Tags">
+                      <option disabled>Choose your tag</option>
+                      <option *ngFor="let tag of Tags"  value="{{tag.id}}" >{{tag.name}}</option>
+                  </optgroup> 
+                </select>
+                
+              </mz-select-container>
+              <div class="chip" *ngFor="let choosedTag of New.tags">
+                {{choosedTag.name}}
+                <i class="close material-icons" (click)="deleteTag(choosedTag)">close</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <editor
+    [init]="EditorConfig"
+    name="content"
+    ngModel
+    apiKey="dc8l1mhcepaismnop9h1rg7arqnzqbh7kc30qulvjus8ra18"
+  ></editor>  
+  <editor
+    [init]="HeaderConfig"
+    name="title"
+    ngModel
+    apiKey="dc8l1mhcepaismnop9h1rg7arqnzqbh7kc30qulvjus8ra18"
+  ></editor>    
+</form>
+</section>

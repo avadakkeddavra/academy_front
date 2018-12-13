@@ -1,0 +1,25 @@
+table{
+    td, th{
+        padding-left: 15px;
+        font-size: 14px;
+    }
+    thead{
+        th{
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+}
+.pagination{
+    padding: 10px 20px;
+    .counter{
+        font-size: 12px;
+        line-height: 28px;
+    }
+    .page-actions{
+        i {
+            font-size: 25px;
+            padding: 0px 7px;
+        }
+    }
+}

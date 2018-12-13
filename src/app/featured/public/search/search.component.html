@@ -1,0 +1,29 @@
+
+<header class="blue lighten-1">
+    <div class="title white-text">
+      <input type="text" placeholder="Search">
+    </div>
+ </header>
+ <section class="main container">
+   <div class="row" *ngIf="News && News.length > 0">
+     <div class="col m4 s4" *ngFor="let new of News">
+      <div class="card">
+        <a>
+            <div class="card-image waves-effect waves-block waves-light" 
+            [ngStyle]="{'background-image': 'url(http://localhost:3000/' + new.attachements[0].path + ')'}">
+            </div>
+        </a>
+          
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{new.title}}<i class="material-icons right">more_vert</i></span>
+          <p><a href="#">Посмотреть</a></p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{new.title}}<i class="material-icons right">close</i></span>
+          <p>{{new.content}}</p>
+        </div>
+      </div>
+     </div>
+   </div>
+
+ </section>

@@ -15,9 +15,8 @@ header {
         box-shadow: 0 1px 0 0 #fff;
     }
 } 
-
-section.main{
-    display: flex;
-    flex-direction: row;
-    flex-grow: 1;
+.card-image{
+    height: 250px;
+    background-size: cover;
+    background-position: center;
 }

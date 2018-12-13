@@ -1,0 +1,23 @@
+<div class="container">
+    <form class="z-depth-3" #loginForm="ngForm">
+        <mz-input-container>
+            <input mz-input
+            [label]="'Email'"
+            name="email"
+            ngModel
+            required
+            length="150"
+            type="email">
+        </mz-input-container>
+        <mz-input-container>
+            <input mz-input
+            [label]="'Password'"
+            name="password"
+            ngModel
+            length="150"
+            required
+            type="password">
+        </mz-input-container>
+        <button mz-button buttonClass="blue" [disabled]="!loginForm.valid" (click)="login(loginForm)">Login</button>
+    </form>
+</div>

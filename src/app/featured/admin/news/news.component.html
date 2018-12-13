@@ -1,0 +1,14 @@
+<mz-navbar navbarClass="grey lighten-4">
+    <mz-navbar-item-container [align]="'left'">
+      <mz-navbar-item> 
+        <a routerLink="/admin/news" mz-button flat="true">News list</a>
+      </mz-navbar-item>
+      <mz-navbar-item> 
+          <a routerLink="/admin/news/create" mz-button flat="true">Add new</a>
+      </mz-navbar-item>
+    </mz-navbar-item-container>
+</mz-navbar>
+
+<section class="news">
+    <router-outlet></router-outlet>
+</section>

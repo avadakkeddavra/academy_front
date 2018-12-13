@@ -1,0 +1,52 @@
+.editor{
+    input {
+        border: 1px solid #eee !important;
+        background-color: transparent;
+        border: none;
+        border-bottom: none !important;
+        border-radius: 0;
+        outline: none;
+        height: auto !important;
+        width: 100%;
+        font-size: 14px !important;
+        margin: 0px !important;
+        padding: 0;
+        box-shadow: none;
+        box-sizing: border-box !important;
+        transition: all 0.3s;
+    }
+}
+.new {
+    position: relative;
+    & > .img img{
+        position: relative;
+        z-index: 2;
+    }
+    .new-container {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 50%;
+        .card{
+            padding: 20px;
+            .new-content {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+.card.tags{
+    margin-top: 100px;
+}
+
+.image-caption{
+    width: 20%;
+    height:100px;
+    background-size: cover;
+    background-position: center;
+    float: left;
+    &.selected{
+        border: 1px solid green;
+    }
+}

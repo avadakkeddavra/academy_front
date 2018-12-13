@@ -1,0 +1,50 @@
+<div class="search">
+  <div class="input-field">
+      <input mz-input
+      [label]="'Поиск'"
+      type="text">
+  </div>
+</div>
+
+<div class="news z-depth-4" *ngIf="News && News.length > 0">
+  <table class="responsive-table highlight">
+    <thead>
+      <tr class="grey-text text-darken-1">
+        <th>ID</th>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Создатель</th>
+        <th>Теги</th>
+        <th>Кол-во файлов</th>
+        <th>Дата создания</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let new of News">
+        <td>{{new.id}}</td>
+        <td>{{new.title}}</td>
+        <td>{{new.content | slice:0:100}}</td>
+        <td>{{new.creator.name}}</td>
+        <td>
+            <div class="chip" *ngFor="let tag of new.tags">
+                {{tag.name}}
+                <i class="close material-icons">close</i>
+            </div>
+        </td>
+        <td>{{new.attachements.length}}</td>
+        <td>{{new.createdAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="pagination">
+    <div class="right page-actions">
+      <i class="material-icons grey-text">keyboard_arrow_left</i>
+      <i class="material-icons grey-text">keyboard_arrow_right</i>
+    </div>
+    <span class="counter grey-text right">
+        1-2 of {{News.lentgh}}
+    </span>
+    <div class="clearfix"></div>
+  </div>
+</div>

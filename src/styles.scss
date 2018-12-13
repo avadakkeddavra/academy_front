@@ -12,3 +12,20 @@ span.badge{
     min-width: 20px !important;
     font-weight: bold !important;
 }
+.mce-textbox{
+    background: #fff !important;
+    border: 1px solid #c5c5c5 !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    display: inline-block !important;
+    -webkit-transition: border linear .2s, box-shadow linear .2s !important;
+    transition: border linear .2s, box-shadow linear .2s !important;
+    height: 28px !important;
+    padding: 0 4px 0 4px !important;
+    color: #595959;
+    margin: 0px !important;
+    font-size: 14px !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+}
