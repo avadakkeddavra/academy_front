@@ -86,8 +86,10 @@ export class NewsCreateComponent implements OnInit {
     });
     this.NewsService.allAttachements().subscribe((data: any) => {
       data.forEach((file) => {
-        file.selected = 0;
-        this.Attachements.push(file);
+        if (! this.New.attachements.includes(file.id)) {
+          file.selected = 0;
+          this.Attachements.push(file);
+        }
       });
     });
   }

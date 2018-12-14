@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MzButtonModule, MzInputModule, MzCardModule, MzNavbarModule, MzIconModule, MzSelectModule, MzTabModule } from 'ngx-materialize';
-import { MzBadgeModule } from 'ngx-materialize'
+import {
+  MzButtonModule,
+  MzInputModule,
+  MzCardModule,
+  MzNavbarModule,
+  MzIconModule,
+  MzSelectModule,
+  MzTabModule,
+  MzModalModule
+} from 'ngx-materialize';
+import { MzBadgeModule } from 'ngx-materialize';
 
 @NgModule({
   declarations: [],
@@ -14,7 +23,8 @@ import { MzBadgeModule } from 'ngx-materialize'
     MzBadgeModule,
     MzIconModule,
     MzSelectModule,
-    MzTabModule
+    MzTabModule,
+    MzModalModule
   ],
   exports: [
     MzButtonModule,
@@ -24,7 +34,8 @@ import { MzBadgeModule } from 'ngx-materialize'
     MzBadgeModule,
     MzIconModule,
     MzSelectModule,
-    MzTabModule
+    MzTabModule,
+    MzModalModule
   ]
 })
 export class MaterialModule { }

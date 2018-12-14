@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import {FileManagerModule} from './file-manager/file-manager.module';
 
 @NgModule({
   declarations: [AdminComponent, DashboardComponent, LoginComponent, RegisterComponent],
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    FileManagerModule
   ]
 })
 export class AdminModule { }

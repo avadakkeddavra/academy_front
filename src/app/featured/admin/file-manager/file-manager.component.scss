@@ -1,0 +1,33 @@
+section.file-manager{
+  .title{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .folder-list{
+    h4{
+      margin-bottom: 20px;
+    }
+    padding: 20px 20px;
+    background-color: #fff;
+    .folder{
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+  }
+  .files-list{
+    padding: 0px !important;
+    .table-responsive{
+      padding: 20px;
+    }
+    table {
+      tr{
+        cursor: pointer;
+      }
+    }
+    mz-navbar {
+      i{
+        padding: 0px 15px;
+      }
+    }
+  }
+}

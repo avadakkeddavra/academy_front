@@ -27,6 +27,11 @@ const routes: Routes = [
           path: 'news',
           loadChildren: './news/news.module#NewsModule',
           canActivate: [AuthGuard]
+        },
+        {
+          path: 'file-manager',
+          loadChildren: './file-manager/file-manager.module#FileManagerModule',
+          canActivate: [AuthGuard]
         }
     ]
   }

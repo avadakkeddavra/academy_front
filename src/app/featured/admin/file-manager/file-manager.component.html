@@ -1,0 +1,87 @@
+<mz-modal #bottomSheetModal  [fixedFooter]="false" [bottomSheet]="false" [options]="modalOptions">
+  <mz-modal-header *ngIf="ActiveFolder">
+    <h4>Create folder</h4>
+    <p>Will be created it <b>/{{ActiveFolder.name}}/{{folderName.value}}</b></p>
+  </mz-modal-header>
+  <mz-modal-content>
+    <form>
+      <mz-input-container>
+        <input mz-input [label]="'Folder name'" type="text" #folderName required>
+      </mz-input-container>
+      <button mz-button type="button" (click)="createNewFolder(folderName.value)">Create</button>
+    </form>
+  </mz-modal-content>
+</mz-modal>
+<mz-modal #uploadFilesModal  [fixedFooter]="false" [bottomSheet]="false" [options]="modalOptions">
+  <mz-modal-header *ngIf="ActiveFolder">
+    <h4>Create folder</h4>
+    <p>Will be created it <b>/{{ActiveFolder.name}}/{{folderName.value}}</b></p>
+  </mz-modal-header>
+  <mz-modal-content>
+    <form>
+      <div class="file-field input-field">
+        <div class="btn">
+          <span>File</span>
+          <input type="file" multiple #fileInput>
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Upload one or more files">
+        </div>
+      </div>
+      <button mz-button type="button" (click)="uploadFiles(fileInput)">Upload</button>
+    </form>
+  </mz-modal-content>
+</mz-modal>
+<section class="file-manager">
+  <div class="row">
+    <div class="col m3 folder-list z-depth-3" [style.height.px]="height">
+      <h4>Folders</h4>
+      <div class="folder row" *ngFor="let folder of Folders" (click)="getFolderFiles(folder.id)">
+        <i class="material-icons left">{{folder.active === true ? 'folder_open' : 'folder'}}</i>
+        <span class="left"><b>{{folder.id === 1 ? '@root' : ''}}</b>/{{folder.name}}</span>
+      </div>
+    </div>
+    <div class="col m9 files-list">
+      <mz-navbar navbarClass="blue lighten-1 z-depth-2">
+        <mz-navbar-item-container [align]="'right'">
+          <mz-navbar-item>
+            <i class="material-icons" (click)="bottomSheetModal.openModal()">create_new_folder</i>
+          </mz-navbar-item>
+          <mz-navbar-item>
+            <i class="material-icons" (click)="uploadFilesModal.openModal()">note_add</i>
+          </mz-navbar-item>
+        </mz-navbar-item-container>
+      </mz-navbar>
+      <div class="table-responsive">
+        <table class="highlight">
+          <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>type</th>
+            <th>Path</th>
+            <th>Size</th>
+            <th>Date</th>
+            <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let file of Files">
+            <td>
+              <i class="material-icons" *ngIf="file.type.indexOf('image') !== -1">note</i>
+              <i class="material-icons" *ngIf="file.type.indexOf('folder') !== -1">folder</i>
+            </td>
+            <td (click)="fileAction(file)">{{file.name}}</td>
+            <td>{{file.type}}</td>
+            <td>{{file.path}}</td>
+            <td>{{file.size}}</td>
+            <td>{{file.updated_at | date:'dd-MMMM'}}</td>
+            <td><i class="material-icons" (click)="deleteFile(file)">delete</i></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+

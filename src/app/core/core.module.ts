@@ -9,7 +9,6 @@ import { AuthInterceptor } from './auth';
   imports: [
     CommonModule,
     HttpClientModule
-    
   ],
   providers: [NewsService, AuthInterceptor]
 })
