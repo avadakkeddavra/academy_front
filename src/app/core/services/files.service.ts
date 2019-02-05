@@ -37,4 +37,8 @@ export class FilesService {
   createFolder(id, data) {
     return this.http.post(environment.api + '/folders/' + id, data);
   }
+
+  toggleList(id) {
+    return this.http.get(environment.api + '/files/' + id + '/list');
+  }
 }

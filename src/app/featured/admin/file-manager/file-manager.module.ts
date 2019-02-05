@@ -10,6 +10,7 @@ import {SharedModule} from '../../../shared/shared.module';
     CommonModule,
     FileManagerRoutingModule,
     SharedModule
-  ]
+  ],
+  exports: [FileManagerComponent]
 })
 export class FileManagerModule { }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import {FilesService} from '../../../core/services/files.service';
 
 @Component({
@@ -6,7 +6,13 @@ import {FilesService} from '../../../core/services/files.service';
   templateUrl: './file-manager.component.html',
   styleUrls: ['./file-manager.component.scss']
 })
-export class FileManagerComponent implements OnInit {
+export class FileManagerComponent implements OnInit, OnChanges {
+
+  @Input() insideMode: boolean;
+  @Input() single: boolean;
+  @Input() selectedItems: any[];
+  
+  
   Folders: any;
   height = window.innerHeight - 65;
   Files: any;
@@ -21,10 +27,20 @@ export class FileManagerComponent implements OnInit {
   };
 
   ActiveFolder: any;
+  SelectedFiles: any[] = [];
+
+  @Output() selected = new EventEmitter();
+  @Output() main = new EventEmitter();
   constructor(
     private files: FilesService
   ) { }
-
+  ngOnChanges() {
+    this.SelectedFiles.forEach((file, index) => {
+      if(! this.selectedItems.includes(file.id)) {
+        this.SelectedFiles.splice(index, 1);
+      }
+    })
+  }
   ngOnInit() {
     this.files.allFolders().subscribe((data) => {
       this.Folders = data;
@@ -35,6 +51,27 @@ export class FileManagerComponent implements OnInit {
       });
     });
   }
+
+  selectFile(event, file) {
+    if(event.target.checked === true) {
+      console.log(this.selectedItems);
+      this.SelectedFiles.push(file);
+    } else {
+      this.SelectedFiles.forEach((item, index) => {
+        if(item.id === file.id) {
+          this.SelectedFiles.splice(index, 1);
+        }
+      })
+    }
+
+    this.selected.emit(this.SelectedFiles);
+    this.SelectedFiles = [];
+  }
+
+  chooseMain(file) {
+    this.main.emit(file);
+  }
+
   getFolderFiles(id) {
     this.files.getFolder(id).subscribe((files: any) => {
       this.Files = files;
@@ -87,8 +124,9 @@ export class FileManagerComponent implements OnInit {
     if (FileInput.files.length > 0) {
       console.log(FileInput.files);
       const data = new FormData();
-      data.append('files', FileInput.files[0]);
-      console.log(data);
+      for(let file of FileInput.files) {
+        data.append('files', file);
+      }
       this.files.upload(this.ActiveFolder.id, data).subscribe((files: any[]) => {
         files.forEach((item) => {
           this.Files.push(item);
@@ -104,5 +142,11 @@ export class FileManagerComponent implements OnInit {
         this.Files.unshift(folder);
       });
     }
+  }
+
+  listToggle(file) {
+    this.files.toggleList(file.id).subscribe((item: any) => {
+      file.list = item.list;
+    });
   }
 }

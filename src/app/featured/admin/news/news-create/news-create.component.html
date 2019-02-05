@@ -1,12 +1,27 @@
+<mz-modal #files [fullscreen]="true" [bottomSheet]="false" [options]="modalOptions">
+    <mz-modal-header>
+    </mz-modal-header>
+    <mz-modal-content>
+      <app-file-manager 
+      [insideMode]="true" 
+      [single]="SingleMode" 
+      [(selectedItems)]="New.attachements" 
+      (selected)="selectedFiles($event); noChanges = false;"
+      (main)="mainImg($event); files.closeModal()">
+    </app-file-manager>
+    </mz-modal-content>
+  </mz-modal>
 <section>
   <form #createForm="ngForm">
     <div class="row">
       <div class="col m8">
         <div class="new row">
             <div class="col m4 img">
-                <img src="https://cdn.shopify.com/s/files/1/1775/8583/t/1/assets/geometric-aquamarine.jpg?630222957639193643"
+                <img 
+                [src]="ParentNew.mainImg.path"
                 alt=""
-                class="responsive-img z-depth-2">
+                class="responsive-img z-depth-2"
+                (click)="SingleMode = true; files.openModal();">
             </div>
             <div class="new-container">
               <div class="card z-depth-4">
@@ -32,31 +47,9 @@
                     <div class="clearfix"></div>
                   </div>
                 </div>
-                <mz-tab *ngIf="Attachements">
-                  <mz-tab-item [label]="'Upload files'">
-                    <div class="file-field input-field">
-                        <div class="btn">
-                          <span>File</span>
-                          <input type="file" multiple #files (change)="fileUpload(files)">
-                        </div>
-                        <div class="file-path-wrapper">
-                          <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                        </div>
-                    </div>
-                  </mz-tab-item>
-                  <mz-tab-item [label]="'Choose file'">
-                    <div class="image-caption hoverable"
-                    [ngStyle]="{'background-image': 'url(http://localhost:3000/' + file.path + ')'}"
-                    [ngClass]="file.selected === 1 ? 'selected' : ''"
-                    *ngFor="let file of Attachements"
-                    (click)="addFile(file)"
-                    ></div>
-                    <div class="clearfix"></div>
-                  </mz-tab-item>
-                </mz-tab>
-
+                <button type="button" mz-button [flat]="true" class='blue' (click)="SingleMode = false;files.openModal()">File manager</button>
               </div>
-              <button class="btn orange white-text" [disabled]="!createForm.valid || createForm.untouched" (click)="save()">save</button>
+              <button class="btn orange white-text" [disabled]="noChanges === true && createForm.untouched" (click)="save()">save</button>
             </div>
         </div>
       </div>

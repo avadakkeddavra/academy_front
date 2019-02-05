@@ -8,6 +8,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import {RouterModule} from '@angular/router';
+import { FileManagerModule } from '../file-manager/file-manager.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {RouterModule} from '@angular/router';
     SharedModule,
     RouterModule,
     FormsModule,
-    EditorModule
+    EditorModule,
+    FileManagerModule
   ],
   bootstrap: [NewsComponent]
 })

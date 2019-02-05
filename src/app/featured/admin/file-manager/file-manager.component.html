@@ -11,6 +11,9 @@
       <button mz-button type="button" (click)="createNewFolder(folderName.value)">Create</button>
     </form>
   </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" type="button" (click)="bottomSheetModal.closeModal()">close</button>
+  </mz-modal-footer>
 </mz-modal>
 <mz-modal #uploadFilesModal  [fixedFooter]="false" [bottomSheet]="false" [options]="modalOptions">
   <mz-modal-header *ngIf="ActiveFolder">
@@ -31,6 +34,9 @@
       <button mz-button type="button" (click)="uploadFiles(fileInput)">Upload</button>
     </form>
   </mz-modal-content>
+  <mz-modal-footer>
+      <button mz-button [flat]="true" type="button" (click)="uploadFilesModal.closeModal()">close</button>
+    </mz-modal-footer>
 </mz-modal>
 <section class="file-manager">
   <div class="row">
@@ -53,9 +59,10 @@
         </mz-navbar-item-container>
       </mz-navbar>
       <div class="table-responsive">
-        <table class="highlight">
+        <table class="highlight" [ngClass]="insideMode && insideMode === true ? 'inside-mode' : ''">
           <thead>
           <tr>
+            <th *ngIf="insideMode && insideMode === true"></th>
             <th>#</th>
             <th>Name</th>
             <th>type</th>
@@ -66,7 +73,19 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let file of Files">
+          <tr *ngFor="let file of Files" (click)="insideMode === true && single === true ? chooseMain(file) : ''">
+            <td *ngIf="insideMode && insideMode === true && single === false">
+              <mz-checkbox-container>
+                <input mz-checkbox
+                  [filledIn]="true"
+                  id="file{{file.id}}"
+                  type="checkbox"
+                  *ngIf="selectedItems"
+                  [checked]="selectedItems.includes(file.id)"
+                  [disabled]="selectedItems.includes(file.id) || file.type.indexOf('folder') !== -1"
+                  (change)="selectFile($event, file)">
+              </mz-checkbox-container>
+            </td>
             <td>
               <i class="material-icons" *ngIf="file.type.indexOf('image') !== -1">note</i>
               <i class="material-icons" *ngIf="file.type.indexOf('folder') !== -1">folder</i>
@@ -76,7 +95,10 @@
             <td>{{file.path}}</td>
             <td>{{file.size}}</td>
             <td>{{file.updated_at | date:'dd-MMMM'}}</td>
-            <td><i class="material-icons" (click)="deleteFile(file)">delete</i></td>
+            <td>
+              <i class="material-icons" (click)="listToggle(file)">{{file.list === 0 ? 'playlist_add' : 'close'}}</i>
+              <i class="material-icons" (click)="deleteFile(file)">delete</i>
+            </td>
           </tr>
           </tbody>
         </table>

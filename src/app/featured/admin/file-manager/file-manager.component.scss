@@ -16,12 +16,19 @@ section.file-manager{
   }
   .files-list{
     padding: 0px !important;
+
     .table-responsive{
       padding: 20px;
     }
     table {
       tr{
         cursor: pointer;
+        
+      }
+      &.inside-mode {
+        td {
+          padding: 5px !important;
+        }
       }
     }
     mz-navbar {
@@ -31,3 +38,9 @@ section.file-manager{
     }
   }
 }
+
+  .checkbox-field{
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
