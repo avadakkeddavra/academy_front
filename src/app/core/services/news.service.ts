@@ -9,8 +9,8 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  all() {
-    return this.http.get(environment.api + '/news');
+  all(search = false) {
+    return this.http.get(environment.api + `/news${search ? '?tag='+search : ''}`);
   }
 
   allTags() {
@@ -39,5 +39,9 @@ export class NewsService {
 
   get(id) {
     return this.http.get(environment.api + '/news/' + id);
+  }
+
+  createTag(name){
+    return this.http.post(environment.api + '/tags', {name});
   }
 }

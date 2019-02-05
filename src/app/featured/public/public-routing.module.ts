@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchComponent } from './search/search.component';
 import { PublicComponent } from './public.component';
+import {NewSingleComponent} from "./new-single/new-single.component";
 
 const routes: Routes = [
     {
@@ -16,6 +17,10 @@ const routes: Routes = [
             {
                 path: 'search',
                 component: SearchComponent
+            },
+            {
+              path: 'new/:id',
+              component: NewSingleComponent
             }
         ]
     }

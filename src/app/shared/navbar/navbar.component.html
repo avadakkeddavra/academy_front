@@ -1,11 +1,17 @@
 <mz-navbar navbarClass="blue lighten-1 z-depth-2">
 
-  <mz-navbar-item-container [align]="'left'">
-    <mz-navbar-item> <a routerLink="/" class="brand-logo">Logo</a></mz-navbar-item>
-    <mz-navbar-item><a routerLink="/search" [queryParams]="{search: 'Кафедры'}" class="white-text" mz-button flat="true">Кафедры</a></mz-navbar-item>
-    <mz-navbar-item><a routerLink="/search" [queryParams]="{search: 'Кафедры'}" class="white-text" mz-button flat="true">Студентам</a></mz-navbar-item>
-    <mz-navbar-item><a routerLink="/search" [queryParams]="{search: 'Кафедры'}" class="white-text" mz-button flat="true">Абитуриентам</a></mz-navbar-item>
-    <mz-navbar-item><a routerLink="/search" [queryParams]="{search: 'Кафедры'}" class="white-text" mz-button flat="true">Расписание</a></mz-navbar-item>
+  <mz-navbar-item-container [align]="'left'" *ngIf="Menu">
+    <mz-navbar-item><a routerLink="/" class="brand-logo">Logo</a></mz-navbar-item>
+    <mz-navbar-item *ngFor="let item of Menu">
+      <a
+        routerLink="/search"
+        routerLinkActive="orange"
+        [queryParams]="{search: item.name}"
+        class="white-text btn-flat" >{{item.name}}</a>
+    </mz-navbar-item>
+    <!--<mz-navbar-item><a routerLink="/search" routerLinkActive="active" [queryParams]="{search: 'Студентам'}" class="white-text btn-flat">Студентам</a></mz-navbar-item>-->
+    <!--<mz-navbar-item><a routerLink="/search" routerLinkActive="active" [queryParams]="{search: 'Абитуриентам'}" class="white-text btn-flat">Абитуриентам</a></mz-navbar-item>-->
+    <!--<mz-navbar-item><a routerLink="/search" routerLinkActive="active" [queryParams]="{search: 'Расписание'}" class="white-text btn-flat">Расписание</a></mz-navbar-item>-->
   </mz-navbar-item-container>
   <mz-navbar-item-container [align]="'right'">
       <mz-navbar-item>

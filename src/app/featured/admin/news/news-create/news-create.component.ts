@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsService } from 'src/app/core/services/news.service';
 import {ActivatedRoute} from '@angular/router';
 import { environment } from 'src/environments/environment';
+import {MzToastService} from "ngx-materialize";
 @Component({
   selector: 'app-news-create',
   templateUrl: './news-create.component.html',
@@ -11,6 +12,7 @@ export class NewsCreateComponent implements OnInit {
 
   env = environment;
   noChanges = true;
+  showLoader = false;
   HeaderConfig = {
     selector: '.title',
     menubar: false,
@@ -72,7 +74,8 @@ export class NewsCreateComponent implements OnInit {
 
   constructor(
     private NewsService: NewsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: MzToastService
   ) { }
 
   ngOnInit() {
@@ -166,7 +169,7 @@ export class NewsCreateComponent implements OnInit {
       if(this.Mode === 'edit') {
         console.log(this.New);
         this.NewsService.deleteAttachements(this.ParentNew.id, fileId).subscribe((data) => {
-          
+
           this.New.attachements.find((file, index) => {
             if (fileId === file) {
               this.New.attachements.splice(index, 1);
@@ -180,18 +183,27 @@ export class NewsCreateComponent implements OnInit {
     }
 
   }
-
+  createTag($event) {
+    this.NewsService.createTag($event).subscribe((data: any) => {
+      this.Tags.push(data.data);
+      this.toast.show('Тэг создан', 3000, 'grey');
+    })
+  }
   save() {
     console.log(this.New);
     if (this.ParentNew && this.ParentNew.id) {
       this.NewsService.edit(this.ParentNew.id, this.New).subscribe((data: any) => {
-        console.log(data);
+        this.toast.show('Сохранено', 3000, 'grey');
       });
 
     } else {
       this.NewsService.create(this.New).subscribe((data) => {
+        this.toast.show('Создано', 3000, 'green');
       });
     }
+    setTimeout(() => {
+      this.showLoader = false;
+    },1000);
 
   }
 }

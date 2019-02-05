@@ -1,0 +1,23 @@
+::ng-deep body{
+  background-color: #3c6eb8 !important;
+}
+section{
+  .card{
+    background-color: transparent;
+    margin-top: 200px;
+    .card-header{
+      display: flex;
+    }
+    .card-body{
+      margin-top: 20px;
+      font-size: 16px;
+      font-weight: 300;
+    }
+  }
+  img{
+    float: left;
+    max-height: 250px;
+    margin-right: 20px;
+    margin-top: -150px;
+  }
+}

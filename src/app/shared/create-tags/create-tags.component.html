@@ -1,0 +1,14 @@
+<form #tag="ngForm">
+  <mz-input-container>
+    <input
+      mz-input
+      [label]="'Создать тэг'"
+      length="150"
+      type="text"
+      name="tagName"
+      [(ngModel)]="tagName">
+  </mz-input-container>
+  <button mz-button [disabled]="tagName.length === 0" (click)="save.emit(tagName); tagName = ''">
+    Create
+  </button>
+</form>

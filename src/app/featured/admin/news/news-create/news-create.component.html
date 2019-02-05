@@ -2,10 +2,10 @@
     <mz-modal-header>
     </mz-modal-header>
     <mz-modal-content>
-      <app-file-manager 
-      [insideMode]="true" 
-      [single]="SingleMode" 
-      [(selectedItems)]="New.attachements" 
+      <app-file-manager
+      [insideMode]="true"
+      [single]="SingleMode"
+      [(selectedItems)]="New.attachements"
       (selected)="selectedFiles($event); noChanges = false;"
       (main)="mainImg($event); files.closeModal()">
     </app-file-manager>
@@ -17,9 +17,9 @@
       <div class="col m8">
         <div class="new row">
             <div class="col m4 img">
-                <img 
+                <img
                 [src]="ParentNew.mainImg.path"
-                alt=""
+                alt="New image"
                 class="responsive-img z-depth-2"
                 (click)="SingleMode = true; files.openModal();">
             </div>
@@ -29,7 +29,7 @@
                   <div class="col m4"></div>
                   <div class="col m7">
                     <label for="title">Title</label>
-                    <div class="title"></div>
+                    <input type="text" name="title" [(ngModel)]="New.title">
                   </div>
                 </div>
 
@@ -49,7 +49,10 @@
                 </div>
                 <button type="button" mz-button [flat]="true" class='blue' (click)="SingleMode = false;files.openModal()">File manager</button>
               </div>
-              <button class="btn orange white-text" [disabled]="noChanges === true && createForm.untouched" (click)="save()">save</button>
+              <div class="save" style="display: flex;">
+                <mz-spinner [color]="'blue'" [size]="'small'" style="margin-right: 20px;" *ngIf="showLoader"></mz-spinner>
+                <button class="btn orange white-text" [disabled]="noChanges === true && createForm.untouched" (click)="showLoader = true;save()">save</button>
+              </div>
             </div>
         </div>
       </div>
@@ -81,6 +84,12 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div class="card create-tag">
+          <div class="card-content">
+            <div class="card-title">Create tag</div>
+            <app-create-tags (save)="createTag($event)"></app-create-tags>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@ import {
   MzSelectModule,
   MzTabModule,
   MzModalModule,
-  MzCheckboxModule
+  MzCheckboxModule, MzSpinnerModule, MzChipModule
 } from 'ngx-materialize';
 import { MzBadgeModule } from 'ngx-materialize';
 
@@ -26,7 +26,9 @@ import { MzBadgeModule } from 'ngx-materialize';
     MzSelectModule,
     MzTabModule,
     MzModalModule,
-    MzCheckboxModule
+    MzCheckboxModule,
+    MzSpinnerModule,
+    MzChipModule
   ],
   exports: [
     MzButtonModule,
@@ -38,7 +40,9 @@ import { MzBadgeModule } from 'ngx-materialize';
     MzSelectModule,
     MzTabModule,
     MzModalModule,
-    MzCheckboxModule
+    MzCheckboxModule,
+    MzSpinnerModule,
+    MzChipModule
   ]
 })
 export class MaterialModule { }

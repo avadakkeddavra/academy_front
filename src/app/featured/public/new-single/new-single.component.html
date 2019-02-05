@@ -1,0 +1,19 @@
+<section class="new" *ngIf="New">
+  <div class="container">
+    <div class="card">
+
+      <div class="card-content white">
+        <div class="card-header">
+          <img [src]="Env+'/'+New.mainImg.path" alt="">
+          <div class="card-title" >
+            {{New.title}}
+            <br>
+            <mz-chip *ngFor="let tag of New.tags">{{tag.name}}</mz-chip>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="card-body" [innerHtml]="New.content"></div>
+      </div>
+    </div>
+  </div>
+</section>

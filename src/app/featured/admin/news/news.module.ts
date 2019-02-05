@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import {RouterModule} from '@angular/router';
 import { FileManagerModule } from '../file-manager/file-manager.module';
+import {MzToastService} from "ngx-materialize";
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { FileManagerModule } from '../file-manager/file-manager.module';
     EditorModule,
     FileManagerModule
   ],
-  bootstrap: [NewsComponent]
+  bootstrap: [NewsComponent],
+  providers: [MzToastService]
 })
 export class NewsModule { }
